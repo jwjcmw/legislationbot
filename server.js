@@ -17,11 +17,11 @@ const T = new Twit({
   access_token_secret:  process.env.ACCESS_TOKEN_SECRET,
 })
 
-const stream = T.stream('user')
+//const stream = T.stream('user')
 const url = `https://openstates.org/api/v1/bills/?apikey=${process.env.OPEN_STATES_KEY}&state=${process.env.STATE}&search_window=session&sort=updated_at`
 
 // Set up the app endpoint that will be called by 
-app.all('/' + process.env.BOT_ENDPOINT, (request, response, next) => {
+app.all('/' + process.env.BOT_ENDPOINT, (request, response) => {
   
     // Fetch Data from OpenStates API
     https.get(url, (resp) => {
@@ -45,7 +45,7 @@ async function processData(data) {
   
   let bills = JSON.parse(data)
   let tweetBills = []
-  console.log(bills)
+
   // Pull info we want from each obj
   for (const bill of bills) {
     
@@ -67,6 +67,7 @@ async function processData(data) {
       //storage.removeItem(trimBill)
     //}
   }
+  
   
   // Send however many tweets we limit it to, and record them in storage
   tweetBills.slice(0,process.env.TWEET_LIMIT).forEach( bill => {
