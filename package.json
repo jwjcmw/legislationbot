@@ -1,0 +1,19 @@
+{
+  "name": "NCLawsBot",
+  "version": "1.0.0",
+  "description": "Twitter Bot that tweets currently worked on legislation for NC",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "jwjcmw",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.15.4",
+    "twit": "^2.2.11",
+    "node-persist": "^3.0.1"
+  },
+  "engines": {
+    "node": "8"
+  }
+}
